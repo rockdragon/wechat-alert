@@ -10,18 +10,21 @@ export function start() {
       await utils.sleep(10)
       // await contact.allContacts()
 
-      // const person = await contacts.findByName('Jsp')
-      // if (person) {
-      //   debugInfo('Holy crap, it just caught target.')
-      //   global.target = person
-      //   person.say(`Hi, ${person.get('name')}, I'm Walle.`)
-      // }
+      const nickname = 'Izzy'
+      const person = await contacts.findByName(nickname)
+      if (person) {
+        debugInfo('Holy crap, it just caught target.')
+        global.target = person
+        await person.say(`Hi, ${person.get('name')}, I'm Walle.`)
+      } else {
+        println('没找到！', nickname)
+      }
       const room = await rooms.findRoom(/^男人不怕输/i)
       if (room) {
         global.room = room
       }
     })
-    .on('message', (message) => {
+    .on('message', async(message) => {
       events.message(message)
       if (message.self()) {
         return
@@ -30,14 +33,14 @@ export function start() {
       const sender = message.from()
       const senderRoom = message.room()
       const content = message.content()
-      // if (global.target) {
-      //   if (sender.get('id') === target.get('id')) {
-      //     target.say(`you just said: ${content}, ${sender.get('name')}`)
-      //   }
-      // }
+      if (global.target) {
+        if (sender.get('id') === target.get('id')) {
+          await target.say(`you just said: ${content}, ${sender.get('name')}`)
+        }
+      }
       if (global.room) {
         if (senderRoom.obj.id === room.obj.id) {
-          room.say(`${sender.get('name')} said: ${content}`)
+          await room.say(`${sender.get('name')} said: ${content}`)
         }
       }
     })

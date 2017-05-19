@@ -20,7 +20,13 @@ export async function allContacts() {
 }
 
 export async function findByName(name) {
-  const contact = await Contact.find({ name })
+  const contact = await Contact.find({ name: name })
+  debugPersonInfo(contact)
+  return contact
+}
+
+export async function findByAlias(alias) {
+  const contact = await Contact.find({ alias: alias })
   debugPersonInfo(contact)
   return contact
 }

@@ -1,9 +1,22 @@
+import { events, contact } from './actions'
+import { utils } from '../components'
 const { Wechaty } = require('wechaty')
 
 export function start() {
-  Wechaty.instance() // Singleton
-    .on('scan', (url, code) => console.log(`Scan QR Code to login: ${code}\n${url}`))
-    .on('login',       user => console.log(`User ${user} logined`))
-    .on('message',  message => console.log(`Message: ${message}`))
-    .init()
+  const bot = Wechaty.instance()
+
+  bot.on('scan', events.scan)
+    .on('login', async(user) => {
+      events.login(user)
+      await utils.sleep(2)
+      await contact.allContacts()
+    })
+    .on('message', events.message)
+
+  bot.init()
+    .catch(e => {
+      logger.error(e)
+      bot.quit()
+      process.exit(-1)
+    })
 }

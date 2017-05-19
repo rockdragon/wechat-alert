@@ -11,7 +11,7 @@ export function start() {
       // await contact.allContacts()
 
       const nickname = 'Izzy'
-      const person = await contacts.findByName(nickname)
+      const person = await contacts.findByAlias(/^Contrast/i)
       if (person) {
         debugInfo('Holy crap, it just caught target.')
         global.target = person

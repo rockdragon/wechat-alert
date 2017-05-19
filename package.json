@@ -1,0 +1,35 @@
+{
+  "name": "wechat-alert",
+  "version": "1.0.0",
+  "description": "wechat alert bot",
+  "author": "Locke <moyerock@gmail.com>",
+  "scripts": {
+    "start": "BABEL_ENV=server node src/bin/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockdragon/wechat-alert.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rockdragon/wechat-alert/issues"
+  },
+  "homepage": "https://github.com/rockdragon/wechat-alert#readme",
+  "dependencies": {
+    "babel-core": "^6.5.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-es2015-destructuring": "^6.5.0",
+    "babel-plugin-transform-es2015-function-name": "^6.5.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.5.2",
+    "babel-plugin-transform-es2015-parameters": "^6.5.0",
+    "babel-plugin-transform-es2015-spread": "^6.5.2",
+    "babel-plugin-transform-es2015-sticky-regex": "^6.5.0",
+    "babel-plugin-transform-es2015-unicode-regex": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "debug": "^2.6.8",
+    "wechaty": "^0.8.56",
+    "winston": "^2.3.0",
+    "winston-daily-rotate-file": "^1.3.1"
+  }
+}

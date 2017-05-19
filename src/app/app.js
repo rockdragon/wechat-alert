@@ -11,7 +11,7 @@ export function start() {
       // await contact.allContacts()
 
       const nickname = 'Izzy'
-      const person = await contacts.findByAlias(/^Contrast/i)
+      const person = await contacts.findByName(nickname)
       if (person) {
         debugInfo('Holy crap, it just caught target.')
         global.target = person
@@ -19,7 +19,7 @@ export function start() {
       } else {
         println('没找到！', nickname)
       }
-      const room = await rooms.findRoom(/^男人不怕输/i)
+      const room = await rooms.findRoom(/^一个胖子/i)
       if (room) {
         global.room = room
       }

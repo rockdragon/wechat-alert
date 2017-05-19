@@ -1,6 +1,6 @@
 const { Contact } = require('wechaty')
 
-function debugPersonInfo(contact) {
+export function debugPersonInfo(contact) {
   const { id, signature, province, city } = contact.obj
   debugInfo('个人', `${contact.get('name')} ${id}, ${signature}, [${province}-${city}]`)
 }

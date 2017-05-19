@@ -16,20 +16,30 @@ export function start() {
       //   global.target = person
       //   person.say(`Hi, ${person.get('name')}, I'm Walle.`)
       // }
-      const room = await rooms.findRoom(/^撸串/i)
+      const room = await rooms.findRoom(/^男人不怕输/i)
       if (room) {
         global.room = room
       }
     })
     .on('message', (message) => {
       events.message(message)
-      // const sender = message.from()
-      // const content = message.content()
+      if (message.self()) {
+        return
+      }
+
+      const sender = message.from()
+      const senderRoom = message.room()
+      const content = message.content()
       // if (global.target) {
       //   if (sender.get('id') === target.get('id')) {
       //     target.say(`you just said: ${content}, ${sender.get('name')}`)
       //   }
       // }
+      if (global.room) {
+        if (senderRoom.obj.id === room.obj.id) {
+          room.say(`${sender.get('name')} said: ${content}`)
+        }
+      }
     })
 
   bot.init()

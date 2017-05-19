@@ -4,7 +4,8 @@
   "description": "wechat alert bot",
   "author": "Locke <moyerock@gmail.com>",
   "scripts": {
-    "start": "BABEL_ENV=server node src/bin/server"
+    "start": "BABEL_ENV=server node src/bin/server",
+    "debug": "DEBUG=chatbot:* BABEL_ENV=server node src/bin/server"
   },
   "engines": {
     "node" : ">=7.6"

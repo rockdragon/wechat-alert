@@ -7,5 +7,8 @@ export function scan(url, code) {
 }
 
 export function message(message) {
-  println(`Message: ${message}`)
+  const room      = message.room()
+  const sender    = message.from()
+  const content   = message.content()
+  println(`Message: ${sender}: ${content} IN ${room}`)
 }
